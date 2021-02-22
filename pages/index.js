@@ -11,49 +11,40 @@ export async function getStaticProps() {
   };
 }
 
-export default function Home({ shots }) {
-  console.log(shots);
+export const Cards = ({ shots }) => {
   return (
     <div className={styles.container}>
+      {shots.map((shot, index) => (
+        <div key={index} className={styles.cardContainer}>
+          <img className={styles.cardImage} src={shot.stillUrl} alt={shot.title} />
+          <div className={styles.cardFooter}>
+            <div className={styles.cardFooterLeft}>
+              <img src={shot.author.avatarUrl} className={styles.avatarImage} />
+              <h5>{shot.author.name}</h5>
+              <span>{shot.author.isPro ? "Pro" : shot.author.isTeam ? "Team" : ""}</span>
+            </div>
+            <div className={styles.cardFooterLeft}>
+              <img src="/comment.svg" alt="comment" className={styles.logo} />
+              <div>{shot.savesCount}</div>
+              <img src="/like.svg" alt="comment" className={styles.logo} />
+              <div>{shot.likesCount}</div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default function Home({ shots }) {
+  return (
+    <div>
       <Head>
-        <title>Create Next App</title>
+        <title>Shots Grid</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a href="https://github.com/vercel/next.js/tree/master/examples" className={styles.card}>
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>Instantly deploy your Next.js site to a public URL with Vercel.</p>
-          </a>
-        </div>
-      </main>
+      <main className={styles.main}>{shots && <Cards shots={shots} />}</main>
 
       <footer className={styles.footer}>
         <a
