@@ -21,13 +21,15 @@ export const Cards = ({ shots }) => {
             <div className={styles.cardFooterLeft}>
               <img src={shot.author.avatarUrl} className={styles.avatarImage} />
               <h5>{shot.author.name}</h5>
-              <span>{shot.author.isPro ? "Pro" : shot.author.isTeam ? "Team" : ""}</span>
+              <div className="badge">
+                {shot.author.isPro ? "Pro" : shot.author.isTeam ? "Team" : ""}
+              </div>
             </div>
-            <div className={styles.cardFooterLeft}>
+            <div className={styles.cardFooterRight}>
               <img src="/comment.svg" alt="comment" className={styles.logo} />
-              <div>{shot.savesCount}</div>
+              <span>{shot.savesCount}</span>
               <img src="/like.svg" alt="comment" className={styles.logo} />
-              <div>{shot.likesCount}</div>
+              <span>{shot.likesCount}</span>
             </div>
           </div>
         </div>
