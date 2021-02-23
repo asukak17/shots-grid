@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.scss";
-import { Card } from "./_card";
+import Card from "./_card";
 
 export async function getStaticProps() {
   const res = await fetch("https://cdn.dribbble.com/uploads/_/shots.json");

@@ -1,6 +1,6 @@
 import styles from "../styles/Home.module.scss";
 
-export const Card = ({ shot }) => {
+const Card = ({ shot }) => {
   return (
     <div className={styles.cardContainer}>
       <img className={styles.cardImage} src={shot.stillUrl} alt={shot.title} />
@@ -22,3 +22,5 @@ export const Card = ({ shot }) => {
     </div>
   );
 };
+
+export default Card;
