@@ -1,6 +1,6 @@
 import styles from "../styles/Home.module.scss";
 
-const Card = ({ shot }) => {
+function Card({ shot }) {
   return (
     <div className={styles.cardContainer}>
       <img className={styles.cardImage} src={shot.stillUrl} alt={shot.title} />
@@ -21,6 +21,6 @@ const Card = ({ shot }) => {
       </div>
     </div>
   );
-};
+}
 
 export default Card;
